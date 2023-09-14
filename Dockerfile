@@ -9,8 +9,8 @@ COPY . .
 # Install any necessary dependencies
 RUN pip install -r requirements.txt
 
-# # Expose the port that your FastAPI app will listen on
-EXPOSE 80
+# Expose the port that your FastAPI app will listen on
+EXPOSE 8001
 
-CMD ["gunicorn", "main:app", "--bind", "0.0.0.0:80", "--workers", "4"]
-
+# Start the FastAPI application
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8001"]
